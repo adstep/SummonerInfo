@@ -2,9 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace LolNexusScraper.Model
@@ -56,10 +59,35 @@ namespace LolNexusScraper.Model
 
             HtmlNode masteriesNode = PlayerNode.SelectSingleNode(".//td[@class='masteries j-masteries-modal-link']");
 
-            var tree = new TalentTree(masteriesNode);
 
-            tree.GetImage().Save(@"C:\Users\Adam\Pictures\Testing\" + Name + ".jpg", ImageFormat.Jpeg);
+            new Thread(
+                () =>
+                {
+                    var tree = new TalentTree(masteriesNode);
 
+                    Bitmap playerMasteries = tree.GetImage();
+
+                    if (playerMasteries == null)
+                    {
+                        var x = 0;
+                    }
+                    else
+                    {
+                        using (MemoryStream memory = new MemoryStream())
+                        {
+                            using (
+                                FileStream fs = new FileStream(
+                                    @"C:\Users\Adam\Pictures\Testing\" + Name + ".jpg", FileMode.Create,
+                                    FileAccess.ReadWrite))
+                            {
+                                playerMasteries.Save(memory, ImageFormat.Jpeg);
+                                byte[] bytes = memory.ToArray();
+                                fs.Write(bytes, 0, bytes.Length);
+                            }
+                        }
+                    }
+                }).Start();
         }
     }
 }
+    

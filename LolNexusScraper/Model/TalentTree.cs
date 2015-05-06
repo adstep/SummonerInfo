@@ -127,7 +127,7 @@ namespace LolNexusScraper.Model
 
             Graphic.DrawString(string.Format("{0} Offense", count), new Font(")Arial", 14), Brushes.White, TotalLocation);
 
-            Image.Save(@"C:\Users\Adam\Pictures\ScrapedMasteries\test_image.jpg", ImageFormat.Jpeg);
+            //Image.Save(@"C:\Users\Adam\Pictures\ScrapedMasteries\test_image.jpg", ImageFormat.Jpeg);
         }
     }
 

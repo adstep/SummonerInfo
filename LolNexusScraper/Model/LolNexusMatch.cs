@@ -129,10 +129,10 @@ namespace LolNexusScraper.Model
             HtmlNode team2Node = document.SelectSingleNode("//div[@class='team-2']");
             HtmlNodeCollection team2Collection = team2Node.SelectNodes(".//tr[1]");
             Team2.Add(new Player(team2Collection[1]));
-            Team2.Add(new Player(team1Node.SelectSingleNode(".//tr[2]")));
-            Team2.Add(new Player(team1Node.SelectSingleNode(".//tr[3]")));
-            Team2.Add(new Player(team1Node.SelectSingleNode(".//tr[4]")));
-            Team2.Add(new Player(team1Node.SelectSingleNode(".//tr[5]")));
+            Team2.Add(new Player(team2Node.SelectSingleNode(".//tr[2]")));
+            Team2.Add(new Player(team2Node.SelectSingleNode(".//tr[3]")));
+            Team2.Add(new Player(team2Node.SelectSingleNode(".//tr[4]")));
+            Team2.Add(new Player(team2Node.SelectSingleNode(".//tr[5]")));
         }
     }
 }

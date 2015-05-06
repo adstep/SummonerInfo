@@ -22,7 +22,7 @@ namespace LolNexusScraperTests
             Stopwatch watch = new Stopwatch();
 
             watch.Start();
-            LolNexusMatch match = new LolNexusMatch("NA", "Kayvinh");
+            LolNexusMatch match = new LolNexusMatch("NA", "GochuHunted");
             watch.Stop();
 
             Console.Out.WriteLine(watch.ElapsedMilliseconds);
