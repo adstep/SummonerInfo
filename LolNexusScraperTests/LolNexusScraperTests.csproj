@@ -48,7 +48,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\LolNexusScraper\LolNexusScraper\LolNexusScraper.csproj">
+    <ProjectReference Include="..\LolNexusScraper\LolNexusScraper.csproj">
       <Project>{45c4d4aa-ba60-4cb4-ac76-85c9da5ba4fe}</Project>
       <Name>LolNexusScraper</Name>
     </ProjectReference>

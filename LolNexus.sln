@@ -5,9 +5,9 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LolNexusScraperTests", "LolNexusScraperTests\LolNexusScraperTests.csproj", "{2E94E39A-0C22-4897-84BD-F25C9B87C26A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LolNexusScraper", "..\LolNexusScraper\LolNexusScraper\LolNexusScraper.csproj", "{45C4D4AA-BA60-4CB4-AC76-85C9DA5BA4FE}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WriteToImage", "WriteToImage\WriteToImage.csproj", "{3BBFBC2C-C6C5-4827-A117-31A16879ED66}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LolNexusScraper", "LolNexusScraper\LolNexusScraper.csproj", "{45C4D4AA-BA60-4CB4-AC76-85C9DA5BA4FE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +19,14 @@ Global
 		{2E94E39A-0C22-4897-84BD-F25C9B87C26A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E94E39A-0C22-4897-84BD-F25C9B87C26A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E94E39A-0C22-4897-84BD-F25C9B87C26A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{45C4D4AA-BA60-4CB4-AC76-85C9DA5BA4FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{45C4D4AA-BA60-4CB4-AC76-85C9DA5BA4FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{45C4D4AA-BA60-4CB4-AC76-85C9DA5BA4FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{45C4D4AA-BA60-4CB4-AC76-85C9DA5BA4FE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3BBFBC2C-C6C5-4827-A117-31A16879ED66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3BBFBC2C-C6C5-4827-A117-31A16879ED66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3BBFBC2C-C6C5-4827-A117-31A16879ED66}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3BBFBC2C-C6C5-4827-A117-31A16879ED66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45C4D4AA-BA60-4CB4-AC76-85C9DA5BA4FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45C4D4AA-BA60-4CB4-AC76-85C9DA5BA4FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45C4D4AA-BA60-4CB4-AC76-85C9DA5BA4FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45C4D4AA-BA60-4CB4-AC76-85C9DA5BA4FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
