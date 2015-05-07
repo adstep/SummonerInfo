@@ -19,9 +19,9 @@ namespace LolNexusScraper.Model
         public UtilityMasteries utilityMasteries;
         public static Bitmap MasteryImages = Properties.Resources.offensive_masteries;
         public static Bitmap MasteryBorder = Properties.Resources.MasteryBorder;
+        public Bitmap PlayerMasteriesImage;
 
-
-        public TalentTree(HtmlNode talentTreeNode)
+        public TalentTree(HtmlNode talentTreeNode, ref Bitmap playerMasteriesImage)
         {
             TalentTreeNode = talentTreeNode;
 
@@ -36,9 +36,12 @@ namespace LolNexusScraper.Model
             offensiveMasteries = new OffensiveMasteries(offensiveMasteriesNode);
             defensiveMasteries = new DefensiveMasteries(defensiveMasteriesNode);
             utilityMasteries = new UtilityMasteries(utilitiyMasteriesNode);
+
+            PlayerMasteriesImage = playerMasteriesImage;
+            PlayerMasteriesImage = GetImage();
         }
 
-        public Bitmap GetImage()
+        private Bitmap GetImage()
         {
             Bitmap bitmap = new Bitmap(offensiveMasteries.Image.Width * 3, offensiveMasteries.Image.Height);
 
@@ -50,6 +53,14 @@ namespace LolNexusScraper.Model
             }
             
             return bitmap;
+        }
+
+        public void MouseHover(float x, float y)
+        {
+            if (x <= 270.0f)
+            {
+                offensiveMasteries.MouseHover(x, y);
+            }
         }
     }
 
@@ -64,9 +75,13 @@ namespace LolNexusScraper.Model
     public class OffensiveMasteries
     {
         public Bitmap Image;
+        private Bitmap BackupImage;
         private Graphics Graphic;
         public Mastery[] Masteries;
         private static RectangleF TotalLocation = new RectangleF(85, 480, 200, 200);
+
+        private int LastHovered = -1;
+
 
         private static List<PointF> MasteryLocations = new List<PointF>()
         {
@@ -102,6 +117,7 @@ namespace LolNexusScraper.Model
             Graphic.PixelOffsetMode = PixelOffsetMode.HighQuality;
 
             InitializeMasteries(offensiveNode);
+            BackupImage = Image.Clone(new RectangleF(0.0f, 0.0f, Image.Width, Image.Height), Image.PixelFormat);
         }
 
         private void InitializeMasteries(HtmlNode offensiveNode)
@@ -128,6 +144,30 @@ namespace LolNexusScraper.Model
             Graphic.DrawString(string.Format("{0} Offense", count), new Font(")Arial", 14), Brushes.White, TotalLocation);
 
             //Image.Save(@"C:\Users\Adam\Pictures\ScrapedMasteries\test_image.jpg", ImageFormat.Jpeg);
+        }
+
+        public bool MouseHover(float x, float y)
+        {
+            for (int i = 0; i < MasteryLocations.Count; i++)
+            {
+                PointF masteryLocation = MasteryLocations[i];
+
+                if (masteryLocation.X <= x && x <= masteryLocation.X + 49.0f &&
+                    masteryLocation.Y <= y && y <= masteryLocation.Y + 49.0f)
+                {
+                    if (LastHovered != i)
+                    {
+                        LastHovered = i;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            LastHovered = -1;
+            return false;
         }
     }
 

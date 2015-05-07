@@ -17,17 +17,23 @@ namespace LolNexusScraper.Model
         private HtmlNode PlayerNode { get; set; }
 
         public string Name { get; set; }
-        public int GamesPlayedOnChampion { get; set; }
-        public string CurrentSeasonRanking { get; set; }
-        public string NormalWins { get; set; }
-        public string RankedWinsLosses { get; set; }
+        public int GamesPlayedOnChampion { get; private set; }
+        public string CurrentSeasonRanking { get; private set; }
+        public string NormalWins { get; private set; }
+        public string RankedWinsLosses { get; private set; }
+        public string ChampionKills { get; private set; }
+        public string ChampionDeaths { get; private set; }
+        public string ChampionAssists { get; private set; }
+        public string KDA { get; private set; }
 
-        public string ChampionKills { get; set; }
+        private TalentTree masteriesTree;
+        private Bitmap _MasteriesImage;
 
-        public string ChampionDeaths { get; set; }
+        public Bitmap MasteriesImage
+        {
+            get { return _MasteriesImage; }
+        }
 
-        public string ChampionAssists { get; set; }
-        public string KDA { get; set; }
 
         public Player(HtmlNode playerNode)
         {
@@ -63,29 +69,7 @@ namespace LolNexusScraper.Model
             new Thread(
                 () =>
                 {
-                    var tree = new TalentTree(masteriesNode);
-
-                    Bitmap playerMasteries = tree.GetImage();
-
-                    if (playerMasteries == null)
-                    {
-                        var x = 0;
-                    }
-                    else
-                    {
-                        using (MemoryStream memory = new MemoryStream())
-                        {
-                            using (
-                                FileStream fs = new FileStream(
-                                    @"C:\Users\Adam\Pictures\Testing\" + Name + ".jpg", FileMode.Create,
-                                    FileAccess.ReadWrite))
-                            {
-                                playerMasteries.Save(memory, ImageFormat.Jpeg);
-                                byte[] bytes = memory.ToArray();
-                                fs.Write(bytes, 0, bytes.Length);
-                            }
-                        }
-                    }
+                    masteriesTree = new TalentTree(masteriesNode, ref _MasteriesImage);
                 }).Start();
         }
     }
